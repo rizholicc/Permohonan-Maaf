@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Permohonan Maaf</title>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: linear-gradient(to right, #f4f4f4, #d3e0ea);
+        margin: 0;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+      }
+
+      .container,
+      .question-container {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 20px;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+        width: 90%;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .question-container {
+        display: none;
+        text-align: center;
+      }
+
+      h1 {
+        color: #2b2b2b;
+        text-align: center;
+        margin-bottom: 20px;
+        animation: slideDown 1s ease-out;
+      }
+
+      p {
+        font-size: 16px;
+        color: #444;
+        line-height: 1.6;
+        text-align: justify;
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+      }
+
+      p:nth-of-type(1) {
+        animation-delay: 0.5s;
+      }
+      p:nth-of-type(2) {
+        animation-delay: 1s;
+      }
+      p:nth-of-type(3) {
+        animation-delay: 1.5s;
+      }
+
+      .signature {
+        margin-top: 20px;
+        text-align: right;
+        font-style: italic;
+        color: #888;
+        opacity: 0;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 2s;
+      }
+
+      .next-button {
+        margin-top: 25px;
+        text-align: center;
+        animation: fadeIn 1s ease-out forwards;
+        animation-delay: 2.5s;
+      }
+
+      button {
+        padding: 10px 20px;
+        font-size: 16px;
+        margin: 10px;
+        border: none;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .ya-btn {
+        background-color: #4caf50;
+        color: white;
+      }
+
+      .ya-btn:hover {
+        background-color: #45a049;
+      }
+
+      .yes-text {
+        font-size: 18px;
+        margin-top: 20px;
+        color: #2e7d32;
+        display: none;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @media (max-width: 500px) {
+        .container,
+        .question-container {
+          padding: 20px;
+        }
+        p {
+          font-size: 15px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Halaman Maaf -->
+    <div class="container" id="maafPage">
+      <h1>Maaf ya Arshaa</h1>
+      <p>
+        Aku tahu mungkin km masih kecewa atau bahkan marah sama aku. Aku beneran
+        nyesel ga bales chat km dan bikin km diemin aku gini.
+      </p>
+      <p>
+        Aku beneran minta maaf. Maaf udah buat km kecewa, maaf buat km marah,
+        maaf buat semuanya yang bikin km kesel.
+      </p>
+      <p>Semoga kamu bisa maafin aku yaa</p>
+      <div class="signature">
+        Maaf ya,<br />
+        Ai.
+      </div>
+      <div class="next-button">
+        <button onclick="showQuestion()">Lanjut</button>
+      </div>
+    </div>
+
+    <!-- Halaman Pertanyaan -->
+    <div class="question-container" id="questionPage">
+      <h1>dimaafin ga?</h1>
+      <button class="ya-btn" onclick="showResponse()">Ya</button>
+      <button class="tidak-btn" id="noBtn" onmouseover="moveButton()">
+        Tidak
+      </button>
+      <div class="yes-text" id="yesText">
+        arigato gozaimas wowwwwwwww dimaafin
+      </div>
+    </div>
+
+    <script>
+      function showQuestion() {
+        document.getElementById("maafPage").style.display = "none";
+        document.getElementById("questionPage").style.display = "block";
+      }
+
+      function showResponse() {
+        document.getElementById("yesText").style.display = "block";
+      }
+
+      function moveButton() {
+        const button = document.getElementById("noBtn");
+        const container = document.getElementById("questionPage");
+
+        const maxX = container.clientWidth - button.offsetWidth;
+        const maxY = container.clientHeight - button.offsetHeight;
+
+        const randomX = Math.random() * maxX;
+        const randomY = Math.random() * maxY;
+
+        button.style.left = randomX + "px";
+        button.style.top = randomY + "px";
+      }
+    </script>
+  </body>
+</html>
